@@ -4,4 +4,4 @@
 
 (describe "board"
   (it "creates a board"
-    (should= ["-" "-" "-"] (create-board))))
+    (should= ["-" "-" "-" "-" "-" "-" "-" "-" "-"] (create-board 3))))

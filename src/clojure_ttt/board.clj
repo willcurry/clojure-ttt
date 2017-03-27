@@ -1,4 +1,4 @@
 (ns clojure-ttt.board)
 
-(defn create-board []
-  (list "-" "-" "-"))
+(defn create-board [size]
+  (take (* size size) (repeat "-")))
