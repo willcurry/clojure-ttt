@@ -1,7 +1,7 @@
 (ns clojure-ttt.board)
 
 (defn create-board [size]
-  (take (* size size) (repeat "-")))
+  (vec (take (* size size) (repeat "-"))))
 
-(defn mark-board [position board player]
-  (assoc position player))
+(defn mark-board [board position player]
+  (assoc board position player))
