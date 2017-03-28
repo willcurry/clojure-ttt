@@ -5,3 +5,6 @@
 
 (defn mark-board [board position player]
   (assoc board position player))
+
+(defn rows[board]
+  (partition 3 board))

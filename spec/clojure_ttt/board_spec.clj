@@ -8,4 +8,7 @@
 
   (it "marks board correctly"
     (should= ["-" "x" "-" "-" "-" "-" "-" "-" "-"] (mark-board (create-board 3) 1 "x")))
+
+  (it "should know the rows"
+    (should= ["x" "-" "x"] (first (rows ["x" "-" "x" "-" "-" "-" "-" "-" "-"]))))
   )
