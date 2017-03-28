@@ -18,4 +18,8 @@
   (it "should know the columns"
     (should= ["x" "-" "-"] 
       (first (columns ["x" "-" "x" "-" "-" "-" "-" "-" "-"] 3))))
+
+  (it "should know the right diagonal"
+    (should= ["x" "x" "o"] 
+      (first (right-diagonal ["x" "-" "-" "-" "x" "-" "-" "-" "o"] 3))))
   )

@@ -11,3 +11,7 @@
 
 (defn columns [board size]
   (apply map vector (partition size board)))
+
+(defn right-diagonal [board size]
+  [(map #(nth board %) 
+    (range 0 (* size size) (inc size)))])
