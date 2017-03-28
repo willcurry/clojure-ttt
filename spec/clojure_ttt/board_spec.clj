@@ -22,4 +22,8 @@
   (it "should know the right diagonal"
     (should= ["x" "x" "o"] 
       (first (right-diagonal ["x" "-" "-" "-" "x" "-" "-" "-" "o"] 3))))
+
+  (it "should know the left diagonal"
+    (should= ["o" "x" "o"] 
+      (first (left-diagonal ["-" "-" "o" "-" "x" "-" "o" "-" "-"] 3))))
   )

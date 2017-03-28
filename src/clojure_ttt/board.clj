@@ -15,3 +15,7 @@
 (defn right-diagonal [board size]
   [(map #(nth board %) 
     (range 0 (* size size) (inc size)))])
+
+(defn left-diagonal [board size]
+  [(map #(nth board %) 
+    (range (dec size) (dec (* size size)) (dec size)))])
