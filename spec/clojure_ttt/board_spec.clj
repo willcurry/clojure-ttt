@@ -4,14 +4,18 @@
 
 (describe "board"
   (it "creates a board"
-    (should= ["-" "-" "-" "-" "-" "-" "-" "-" "-"] (create-board 3)))
+    (should= ["-" "-" "-" "-" "-" "-" "-" "-" "-"] 
+      (create-board 3)))
 
   (it "marks board correctly"
-    (should= ["-" "x" "-" "-" "-" "-" "-" "-" "-"] (mark-board (create-board 3) 1 "x")))
+    (should= ["-" "x" "-" "-" "-" "-" "-" "-" "-"] 
+      (mark-board (create-board 3) 1 "x")))
 
   (it "should know the rows"
-    (should= ["x" "-" "x"] (first (rows ["x" "-" "x" "-" "-" "-" "-" "-" "-"]))))
+    (should= ["x" "-" "x"] 
+      (first (rows ["x" "-" "x" "-" "-" "-" "-" "-" "-"] 3))))
 
   (it "should know the columns"
-    (should= ["x" "-" "-"] (first (columns ["x" "-" "x" "-" "-" "-" "-" "-" "-"]))))
+    (should= ["x" "-" "-"] 
+      (first (columns ["x" "-" "x" "-" "-" "-" "-" "-" "-"] 3))))
   )
