@@ -11,4 +11,7 @@
 
   (it "should know the rows"
     (should= ["x" "-" "x"] (first (rows ["x" "-" "x" "-" "-" "-" "-" "-" "-"]))))
+
+  (it "should know the columns"
+    (should= ["x" "-" "-"] (first (columns ["x" "-" "x" "-" "-" "-" "-" "-" "-"]))))
   )

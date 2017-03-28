@@ -6,5 +6,8 @@
 (defn mark-board [board position player]
   (assoc board position player))
 
-(defn rows[board]
+(defn rows [board]
   (partition 3 board))
+
+(defn columns [board]
+  (apply map vector (partition 3 board)))
