@@ -19,3 +19,6 @@
 (defn left-diagonal [board size]
   [(map #(nth board %) 
     (range (dec size) (dec (* size size)) (dec size)))])
+
+(defn winning-lines [board size]
+  [(rows board size) (columns board size) (right-diagonal board size) (left-diagonal board size)])

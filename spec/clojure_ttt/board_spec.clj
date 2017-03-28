@@ -26,4 +26,9 @@
   (it "should know the left diagonal"
     (should= ["o" "x" "o"] 
       (first (left-diagonal ["-" "-" "o" "-" "x" "-" "o" "-" "-"] 3))))
+  
+  (it "should know all winning lines"
+    (should= [["-" "-" "o"] ["-" "x" "-"] ["o" "-" "-"]]
+      (first (winning-lines ["-" "-" "o" "-" "x" "-" "o" "-" "-"] 3))))
+
   )
