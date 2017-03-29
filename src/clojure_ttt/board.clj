@@ -31,3 +31,10 @@
 
 (defn draw? [board]
   (not (some #{"-"} board)))
+
+(defn size [board]
+  (int (Math/sqrt (count board))))
+
+(defn valid-position? [board position]
+  (and (= "-" (nth board position)) 
+    (and (< position 0) (> position (size)))))

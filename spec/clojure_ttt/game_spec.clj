@@ -12,5 +12,5 @@
 
   (it "should make a move" 
       (should= ["x" "o"]
-        (with-in-str "1"       
+        (with-in-str "1" 
           (make-move ["x" "-"] "o")))))

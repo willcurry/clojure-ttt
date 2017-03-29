@@ -2,8 +2,7 @@
   (use [clojure-ttt.board]))
 
 (defn game-over? [board]
-  (and (draw? board) (any-wins? board 
-    (int (Math/sqrt (count board))))))
+  (or (draw? board) (any-wins? board (size board))))
 
 (defn- read-move []
   (read-string (read-line)))

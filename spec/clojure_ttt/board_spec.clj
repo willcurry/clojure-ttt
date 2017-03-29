@@ -27,4 +27,7 @@
     (should= false (any-wins? ["-" "-" "o" "-" "x" "-" "x" "-" "-"] 3)))
 
   (it "should know if there is a draw"
-    (should= true (draw? ["x"]))))
+    (should= true (draw? ["x"])))
+
+  (it "should know valid positions"
+    (should= false (valid-position? ["x"] 0))))
