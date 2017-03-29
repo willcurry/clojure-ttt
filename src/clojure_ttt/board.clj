@@ -23,8 +23,11 @@
 (defn- winning-lines [board size]
   [(rows board size) (columns board size) (right-diagonal board size) (left-diagonal board size)])
 
-(defn- has-win [line]
+(defn- has-win? [line]
   (some #(and (= 1 (count (distinct %))) (not (some #{"-"} %))) line))
 
-(defn any-wins [board size]
-  (true? (some #(has-win %) (winning-lines board size))))
+(defn any-wins? [board size]
+  (true? (some #(has-win? %) (winning-lines board size))))
+
+(defn draw? [board]
+  (not (some #{"-"} board)))
