@@ -6,24 +6,24 @@
 (defn mark-board [board position player]
   (assoc board position player))
 
-(defn rows [board size]
+(defn- rows [board size]
   (partition size board))
 
-(defn columns [board size]
+(defn- columns [board size]
   (apply map vector (partition size board)))
 
-(defn right-diagonal [board size]
+(defn- right-diagonal [board size]
   [(map #(nth board %) 
     (range 0 (* size size) (inc size)))])
 
-(defn left-diagonal [board size]
+(defn- left-diagonal [board size]
   [(map #(nth board %) 
     (range (dec size) (dec (* size size)) (dec size)))])
 
-(defn winning-lines [board size]
+(defn- winning-lines [board size]
   [(rows board size) (columns board size) (right-diagonal board size) (left-diagonal board size)])
 
-(defn has-win [line]
+(defn- has-win [line]
   (some #(and (= 1 (count (distinct %))) (not (some #{"-"} %))) line))
 
 (defn any-wins [board size]

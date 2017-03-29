@@ -11,29 +11,18 @@
     (should= ["-" "x" "-" "-" "-" "-" "-" "-" "-"] 
       (mark-board (create-board 3) 1 "x")))
 
-  (it "should know the rows"
-    (should= ["x" "-" "x"] 
-      (first (rows ["x" "-" "x" "-" "-" "-" "-" "-" "-"] 3))))
+  (it "should know if someone has won row"
+    (should= true (any-wins ["x" "x" "x" "-" "-" "-" "-" "-" "-"] 3)))
 
-  (it "should know the columns"
-    (should= ["x" "-" "-"] 
-      (first (columns ["x" "-" "x" "-" "-" "-" "-" "-" "-"] 3))))
+  (it "should know if someone has won column"
+    (should= true (any-wins ["x" "-" "-" "x" "-" "-" "x" "-" "-"] 3)))
 
-  (it "should know the right diagonal"
-    (should= ["x" "x" "o"] 
-      (first (right-diagonal ["x" "-" "-" "-" "x" "-" "-" "-" "o"] 3))))
-
-  (it "should know the left diagonal"
-    (should= ["o" "x" "o"] 
-      (first (left-diagonal ["-" "-" "o" "-" "x" "-" "o" "-" "-"] 3))))
-  
-  (it "should know all winning lines"
-    (should= [["-" "-" "o"] ["-" "x" "-"] ["o" "-" "-"]]
-      (first (winning-lines ["-" "-" "o" "-" "x" "-" "o" "-" "-"] 3))))
-
-  (it "should know if someone has won"
+  (it "should know if someone has won left diagonal"
     (should= true (any-wins ["-" "-" "x" "-" "x" "-" "x" "-" "-"] 3)))
 
-  (it "should know if someone has not won"
+  (it "should know if someone has won right diagonal"
+    (should= true (any-wins ["x" "-" "-" "-" "x" "-" "-" "-" "x"] 3)))
+
+  (it "should know if there is no wins"
     (should= false (any-wins ["-" "-" "o" "-" "x" "-" "x" "-" "-"] 3)))
   )
