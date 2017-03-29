@@ -31,4 +31,9 @@
     (should= [["-" "-" "o"] ["-" "x" "-"] ["o" "-" "-"]]
       (first (winning-lines ["-" "-" "o" "-" "x" "-" "o" "-" "-"] 3))))
 
+  (it "should know if someone has won"
+    (should= true (any-wins ["-" "-" "x" "-" "x" "-" "x" "-" "-"] 3)))
+
+  (it "should know if someone has not won"
+    (should= false (any-wins ["-" "-" "o" "-" "x" "-" "x" "-" "-"] 3)))
   )
