@@ -38,3 +38,8 @@
 (defn valid-position? [board position]
   (and (= "-" (nth board position)) 
     (and (< position 0) (> position (size)))))
+
+(defn available-positions [board]
+  (->> (zipmap (iterate inc 0) board)
+       (filter (fn [[position cell]] (= cell "-")))
+       (map (fn [[position cell]] position))))

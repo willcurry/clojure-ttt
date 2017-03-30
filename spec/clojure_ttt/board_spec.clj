@@ -30,4 +30,13 @@
     (should= true (draw? ["x"])))
 
   (it "should know valid positions"
-    (should= false (valid-position? ["x"] 0))))
+    (should= false (valid-position? ["x"] 0)))
+
+  (it "should know all available positions"
+    (should= [1 2] (available-positions ["x" "-" "-"])))
+
+  (it "should return an empty list when no positions free"
+    (should= [] (available-positions ["x"])))
+
+  (it "should return all positions if all positions are free"
+    (should= [0 1 2] (available-positions ["-" "-" "-"]))))
