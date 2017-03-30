@@ -12,4 +12,13 @@
     (should= 2 (minimax ["x" "-" "-"
                          "o" "o" "x"
                          "o" "x" "x"] "x")))
+
+  (it "blocks the win"
+    (should= 6 (minimax ["o" "-" "-"
+                         "o" "-" "-"
+                         "-" "-" "-"] "x")))
+  (it "goes for the win"
+    (should= 6 (minimax ["x" "-" "-"
+                         "x" "-" "-"
+                         "-" "-" "-"] "x")))
   )
