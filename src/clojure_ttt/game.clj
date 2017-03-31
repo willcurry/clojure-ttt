@@ -7,17 +7,21 @@
 (defn- read-move []
   (read-string (read-line)))
 
-(defn make-move [board player]
-  (mark-board board (read-move) player))
+(defn- find-turn [board]
+  (cond
+    (even? (count (available-positions board))) "x"
+    :else "o"))
 
-(defn- find-turn [turn]
-  (if (= turn "x") "o" "x"))
+(defn make-move [board]
+  (let [move (read-move)]
+    (cond 
+      (valid-position? board move) (mark-board board move (find-turn board))
+      :else board)))
 
-(defn start-game [board turn]
+(defn start-game [board]
   (println board)
   (when-not (game-over? board)
-    (let [player (find-turn turn)]
-      (recur (make-move board player) player))))
+    (recur (make-move board))))
 
 (defn -main [& args]
-  (start-game (create-board 3) "x"))
+  (start-game (create-board 3)))

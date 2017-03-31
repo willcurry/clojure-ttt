@@ -11,6 +11,11 @@
     (should= false (game-over? ["-"])))
 
   (it "should make a move" 
-      (should= ["x" "o"]
+      (should= ["o" "x" "-"]
         (with-in-str "1" 
-          (make-move ["x" "-"] "o")))))
+          (make-move ["o" "-" "-"]))))
+
+  (it "does not let you make moves in invalid cells"
+    (should= ["-"]
+      (with-in-str "10"
+        make-move ["-"]))))

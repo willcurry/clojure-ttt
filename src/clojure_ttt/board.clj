@@ -35,11 +35,11 @@
 (defn draw? [board]
   (not (some #{"-"} board)))
 
-(defn valid-position? [board position]
-  (and (= "-" (nth board position)) 
-    (and (< position 0) (> position (size board)))))
-
 (defn available-positions [board]
   (->> (zipmap (iterate inc 0) board)
        (filter (fn [[position cell]] (= cell "-")))
        (map (fn [[position cell]] position))))
+
+(defn valid-position? [board position]
+  (contains? (vec (available-positions board)) position))
+    
