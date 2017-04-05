@@ -7,11 +7,6 @@
 (defn- read-move []
   (read-string (read-line)))
 
-(defn- find-turn [board]
-  (cond
-    (even? (count (available-positions board))) "x"
-    :else "o"))
-
 (defn make-move [board]
   (let [move (read-move)]
     (cond 
