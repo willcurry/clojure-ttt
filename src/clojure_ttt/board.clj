@@ -44,9 +44,7 @@
   (contains? (vec (available-positions board)) position))
 
 (defn find-turn [board]
-  (cond
-    (even? (count (available-positions board))) "x"
-    :else "o"))
+  (if (even? (count (available-positions board))) "x" "o"))
 
 (defn last-move [board]
   (if (= (find-turn board) "x") "o" "x"))
