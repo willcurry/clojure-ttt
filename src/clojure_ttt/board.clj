@@ -26,20 +26,25 @@
 (defn- has-win? [line]
   (some #(and (= 1 (count (distinct %))) (not (some #{"-"} %))) line))
 
-(defn any-wins? [board size]
-  (true? (some #(has-win? %) (winning-lines board size))))
-
-(defn draw? [board]
-  (not (some #{"-"} board)))
-
 (defn size [board]
   (int (Math/sqrt (count board))))
 
-(defn valid-position? [board position]
-  (and (= "-" (nth board position)) 
-    (and (< position 0) (> position (size)))))
+(defn any-wins? [board]
+  (true? (some #(has-win? %) (winning-lines board (size board)))))
+
+(defn draw? [board]
+  (not (some #{"-"} board)))
 
 (defn available-positions [board]
   (->> (zipmap (iterate inc 0) board)
        (filter (fn [[position cell]] (= cell "-")))
        (map (fn [[position cell]] position))))
+
+(defn valid-position? [board position]
+  (contains? (vec (available-positions board)) position))
+
+(defn find-turn [board]
+  (if (even? (count (available-positions board))) "x" "o"))
+
+(defn last-move [board]
+  (if (= (find-turn board) "x") "o" "x"))
