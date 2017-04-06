@@ -20,8 +20,11 @@
       (> new-score (:score current-best)) 
       (< new-score (:score current-best))))
 
+  (defn- game-over? [board]
+    (or (any-wins? board) (draw? board)))
+
   (defn- minimax [board player depth marks]
-    (if (or (= depth 0) (or (any-wins? board) (draw? board)))
+    (if (or (= depth 0) (game-over? board))
       {:score (score board depth marks) :board board}
       
       (reduce (fn [current-best played-board]
