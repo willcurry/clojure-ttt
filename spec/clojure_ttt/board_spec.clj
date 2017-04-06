@@ -39,4 +39,10 @@
     (should= [] (available-positions ["x"])))
 
   (it "should return all positions if all positions are free"
-    (should= [0 1 2] (available-positions ["-" "-" "-"]))))
+    (should= [0 1 2] (available-positions ["-" "-" "-"])))
+  
+  (it "know whos turn it is"
+    (should= "x" (find-turn ["o" "-" "-"])))
+
+  (it "know who went last"
+    (should= "o" (last-move ["o" "-" "-"]))))
