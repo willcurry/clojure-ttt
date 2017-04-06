@@ -7,8 +7,12 @@
       (and (any-wins? board) (= (last-move board) (second marks))) (- depth)
       :else 0))
 
-  (defn- all-moves-played [board mark positions]
-    (map #(mark-board board % mark) positions))
+  (defn- all-rounds-played [board player positions]
+      (loop [map {}
+        postions-sequence (seq positions)]
+        (if postions-sequence
+          (recur (assoc map (first postions-sequence) (mark-board board (first postions-sequence) player)) (next postions-sequence)) 
+          map)))
 
   (defn- initial-score [marks player]
     (if (= (first marks) player) 
@@ -27,16 +31,16 @@
     (if (or (= depth 0) (game-over? board))
       {:score (score board depth marks) :board board}
       
-      (reduce (fn [current-best played-board]
-        (let 
-         [new-scored-move (minimax played-board (last-move board) (dec depth) marks)
+      (reduce (fn [current-best played-round]
+        (let [played-board (second played-round)
+          played-move (first played-round)
+          new-scored-move (minimax played-board (last-move board) (dec depth) marks)
           new-score (:score new-scored-move)]
-
         (if (favours-computer? marks player new-score current-best)
-          {:score new-score :board played-board}
+          {:score new-score :board played-board :move played-move}
           current-best)))
         (initial-score marks player)
-      (all-moves-played board player (available-positions board)))))
+      (all-rounds-played board player (available-positions board)))))
 
   (defn find-best-move [board player]
-    (:board (minimax board player 8 ["x" "o"])))
+    (:move (minimax board player 8 ["x" "o"])))
