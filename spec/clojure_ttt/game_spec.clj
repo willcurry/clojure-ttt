@@ -13,7 +13,7 @@
   (it "should make a move" 
       (should= ["o" "x" "-"]
         (with-in-str "1" 
-          (make-move ["o" "-" "-"]))))
+          (make-move ["o" "-" "-"] "x"))))
 
   (it "does not let you make moves in invalid cells"
     (should= ["-"]

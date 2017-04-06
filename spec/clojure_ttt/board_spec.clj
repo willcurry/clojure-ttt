@@ -29,8 +29,11 @@
   (it "should know if there is a draw"
     (should= true (draw? ["x"])))
 
-  (it "should know valid positions"
-    (should= false (valid-position? ["x"] 0)))
+  (it "should know if a position is valid"
+    (should= true (valid-position? ["x" "-"] 1)))
+
+  (it "should know if a position is not valid"
+    (should= false (valid-position? ["x" "-"] 0)))
 
   (it "should know all available positions"
     (should= [1 2] (available-positions ["x" "-" "-"])))

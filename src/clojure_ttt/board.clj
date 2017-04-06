@@ -33,7 +33,7 @@
   (true? (some #(has-win? %) (winning-lines board (size board)))))
 
 (defn draw? [board]
-  (not (some #{"-"} board)))
+  (not-any? #{"-"} board))
 
 (defn available-positions [board]
   (->> (zipmap (iterate inc 0) board)
@@ -41,7 +41,7 @@
        (map (fn [[position cell]] position))))
 
 (defn valid-position? [board position]
-  (contains? (vec (available-positions board)) position))
+  (true? (some #(= position %) (available-positions board))))
 
 (defn find-turn [board]
   (if (even? (count (available-positions board))) "x" "o"))
