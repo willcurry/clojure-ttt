@@ -8,4 +8,5 @@
   (println "Type 0 to play human vs human. \n1 to play vs a computer. \n2 to watch two computers play."))
 
 (defn show-board [board]
-  (println board))
+  (let [partitioned-board (map #(apply str %) (partition 3 board))]
+    (println (apply str(interpose "\n" partitioned-board)))))

@@ -8,5 +8,5 @@
       (with-out-str (show-gamemode-options))))
 
   (it "displays the board correctly"
-    (should-contain "[x - - x - - - - -]"
+    (should-contain "x--\nx--\n---"
       (with-out-str (show-board ["x" "-" "-" "x" "-" "-" "-" "-" "-"])))))
