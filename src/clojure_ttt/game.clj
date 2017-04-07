@@ -1,6 +1,7 @@
 (ns clojure-ttt.game
   (use [clojure-ttt.board]
-       [clojure-ttt.computer]))
+       [clojure-ttt.computer]
+       [clojure-ttt.presenter]))
 
 (defn game-over? [board]
   (or (draw? board) (any-wins? board)))
@@ -27,8 +28,7 @@
           :else (recur (make-move board turn) gamemode)))))
 
 (defn- ask-for-settings [board]
-  (println "\033[H\033[2J")
-  (println "Type 0 to play human vs human. \n1 to play vs a computer. \n2 to watch two computers play.")
+  (show-gamemode-options)
   (let [input (read-move)]
     (cond 
       (= input 1) (play-until-over board :hvc)
