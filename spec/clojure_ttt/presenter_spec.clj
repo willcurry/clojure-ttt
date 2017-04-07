@@ -5,4 +5,8 @@
 (describe "presenter"
   (it "displays gamemode options"
     (should-contain "\nType 0 to play human vs human"
-      (with-out-str (show-gamemode-options)))))
+      (with-out-str (show-gamemode-options))))
+
+  (it "displays the board correctly"
+    (should-contain "[x - - x - - - - -]"
+      (with-out-str (show-board ["x" "-" "-" "x" "-" "-" "-" "-" "-"])))))

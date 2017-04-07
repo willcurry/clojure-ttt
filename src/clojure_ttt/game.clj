@@ -19,7 +19,7 @@
   (mark-board board (find-best-move board player) player))
 
 (defn play-until-over [board gamemode]
-  (println board)
+  (show-board board)
   (when-not (game-over? board)
     (let [turn (find-turn board)]
         (cond 
