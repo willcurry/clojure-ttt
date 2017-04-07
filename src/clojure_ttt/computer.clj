@@ -43,4 +43,4 @@
       (all-rounds-played board player (available-positions board)))))
 
   (defn find-best-move [board player]
-    (:move (minimax board player 8 ["x" "o"])))
+    (:move (minimax board player (min 8 (count (available-positions board))) ["x" "o"])))
