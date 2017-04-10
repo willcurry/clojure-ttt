@@ -24,3 +24,6 @@
     (any-wins? board) (println (str (last-move board) " has won the game!"))
     (draw? board) (println "The game is a draw!")
     :else (println (str (find-turn board) " please make your move."))))
+
+(defn show-options []
+  (println "Press 1 to play again, anything else to quit."))

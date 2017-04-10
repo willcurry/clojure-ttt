@@ -36,5 +36,10 @@
       (= input 2) (play-until-over board :cvc)
       :else (play-until-over board :hvh))))
 
+(defn ask-to-play-again []
+  (show-options)
+  (if (= 1 (read-move)) (ask-for-settings (create-board 3))))
+
 (defn -main [& args]
-  (ask-for-settings (create-board 3)))
+  (ask-for-settings (create-board 3))
+  (ask-to-play-again))
